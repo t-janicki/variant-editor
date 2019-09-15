@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
-public class VariantMapper {
+public final class VariantMapper {
 
-    public VariantResponse mapToVariantResponse(Variant variant) {
+    public VariantResponse mapToVariantResponse(final Variant variant) {
         return new VariantResponse(
                 variant.getId(),
                 variant.getPosition(),
@@ -19,17 +19,17 @@ public class VariantMapper {
         );
     }
 
-    public UserVariantsResponse mapToUserVariantsResponse(Variant variant) {
+    public UserVariantsResponse mapToUserVariantsResponse(final Variant variant) {
         return new UserVariantsResponse(
                 variant.getDescription()
         );
     }
 
-     public Page<VariantResponse> mapToVariantResponsePage(Page<Variant> variants) {
+     public Page<VariantResponse> mapToVariantResponsePage(final Page<Variant> variants) {
         return variants.map(this::mapToVariantResponse);
      }
 
-     public Page<UserVariantsResponse> mapToUserVariantsResponsePage(Page<Variant> variants) {
+     public Page<UserVariantsResponse> mapToUserVariantsResponsePage(final Page<Variant> variants) {
         return variants.map(this::mapToUserVariantsResponse);
      }
 }

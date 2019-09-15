@@ -1,6 +1,6 @@
 package com.variants.editor.web.response;
 
-public class VariantResponse {
+public final class VariantResponse {
     private Long id;
     private Long position;
     private String alteration;

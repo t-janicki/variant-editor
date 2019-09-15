@@ -19,7 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 @Component
-public class VariantUserFacade {
+public final class VariantUserFacade {
     private VariantMapper variantMapper;
     private UserMapper userMapper;
     private UserService userService;

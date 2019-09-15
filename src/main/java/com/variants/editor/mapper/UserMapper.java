@@ -6,9 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserMapper {
+public final class UserMapper {
 
-    public UserResponse mapToUserResponse(User user) {
+    public UserResponse mapToUserResponse(final User user) {
         return new UserResponse(
                 user.getId(),
                 user.getName(),
@@ -16,7 +16,7 @@ public class UserMapper {
         );
     }
 
-    public Page<UserResponse> mapToUserResponsePage(Page<User> users) {
+    public Page<UserResponse> mapToUserResponsePage(final Page<User> users) {
         return users.map(this::mapToUserResponse);
     }
 

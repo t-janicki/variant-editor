@@ -80,7 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/authenticate",
                         "/h2/**",
-                        "/user/**",
+                        "/user",
                         "/variant/**")
                 .permitAll()
                 .anyRequest()

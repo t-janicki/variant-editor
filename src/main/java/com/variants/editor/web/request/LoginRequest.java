@@ -1,6 +1,6 @@
 package com.variants.editor.web.request;
 
-public class LoginRequest {
+public final class LoginRequest {
     private String username;
     private String password;
 

@@ -1,7 +1,6 @@
 package com.variants.editor.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.variants.editor.domain.User;
 import com.variants.editor.domain.Variant;
 import com.variants.editor.repository.VariantRepository;
 import com.variants.editor.web.request.VariantRequest;
@@ -34,7 +33,6 @@ public class TestVariantController {
 
     @MockBean
     private VariantRepository mockVariantRepository;
-
 
     @Before
     public void init() {

@@ -1,6 +1,6 @@
 package com.variants.editor.web.request;
 
-public class VariantRequest {
+public final class VariantRequest {
     private Long position;
     private String alteration;
     private String chromosome;

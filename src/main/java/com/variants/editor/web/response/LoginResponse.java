@@ -1,6 +1,6 @@
 package com.variants.editor.web.response;
 
-public class LoginResponse {
+public final class LoginResponse {
     private final String jwtToken;
 
     public LoginResponse(String jwtToken) {

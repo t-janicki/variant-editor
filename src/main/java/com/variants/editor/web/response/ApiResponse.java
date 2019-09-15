@@ -1,6 +1,6 @@
 package com.variants.editor.web.response;
 
-public class ApiResponse {
+public final class ApiResponse {
     private Boolean status;
     private String message;
 

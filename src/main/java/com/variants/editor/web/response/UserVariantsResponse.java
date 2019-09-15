@@ -1,6 +1,6 @@
 package com.variants.editor.web.response;
 
-public class UserVariantsResponse {
+public final class UserVariantsResponse {
     private String description;
 
     public UserVariantsResponse() {

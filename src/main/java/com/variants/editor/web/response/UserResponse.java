@@ -1,6 +1,6 @@
 package com.variants.editor.web.response;
 
-public class UserResponse {
+public final class UserResponse {
     private Long id;
     private String name;
     private String username;
