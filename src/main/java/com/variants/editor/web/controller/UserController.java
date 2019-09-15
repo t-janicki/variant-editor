@@ -29,7 +29,7 @@ public class UserController {
     private VariantUserFacade variantUserFacade;
 
     @Autowired
-    public UserController(VariantUserFacade variantUserFacade) {
+    public void setVariantUserFacade(VariantUserFacade variantUserFacade) {
         this.variantUserFacade = variantUserFacade;
     }
 
@@ -60,7 +60,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/variants", produces = APPLICATION_JSON_VALUE)
-    public Page<UserVariantsResponse> getVariantsOfCurrentUser(Pageable pageable, @AuthenticationPrincipal  UserPrincipal userPrincipal) {
+    public Page<UserVariantsResponse> getVariantsOfCurrentUser(Pageable pageable,
+                                                               @AuthenticationPrincipal  UserPrincipal userPrincipal) {
         return variantUserFacade.getVariantsOfCurrentUser(pageable, userPrincipal);
     }
 }

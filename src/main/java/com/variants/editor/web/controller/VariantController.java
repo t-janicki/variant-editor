@@ -23,7 +23,7 @@ public class VariantController {
     private VariantUserFacade variantUserFacade;
 
     @Autowired
-    public VariantController(VariantUserFacade variantUserFacade) {
+    public void setVariantUserFacade(VariantUserFacade variantUserFacade) {
         this.variantUserFacade = variantUserFacade;
     }
 

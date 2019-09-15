@@ -2,7 +2,7 @@ package com.variants.editor.security;
 
 import com.variants.editor.security.jwt.JwtAuthenticationEntryPoint;
 import com.variants.editor.security.jwt.JwtRequestFilter;
-import com.variants.editor.service.impl.UserServiceImpl;
+import com.variants.editor.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,7 @@ import org.h2.server.web.WebServlet;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
     private JwtRequestFilter jwtRequestFilter;
 
     @Autowired
@@ -33,8 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void setUserServiceImpl(UserServiceImpl userServiceImpl) {
-        this.userServiceImpl = userServiceImpl;
+    public void setUserServiceImpl(UserService userService) {
+        this.userService = userService;
     }
 
     @Autowired
@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userServiceImpl).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -80,7 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/authenticate",
                         "/h2/**",
-                        "/user",
+                        "/user/**",
                         "/variant/**")
                 .permitAll()
                 .anyRequest()

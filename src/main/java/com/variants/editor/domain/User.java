@@ -30,6 +30,11 @@ public class User {
     public User() {
     }
 
+    public User(String name, String username) {
+        this.name = name;
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }
