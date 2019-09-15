@@ -2,7 +2,7 @@ package com.variants.editor.web.controller;
 
 import com.variants.editor.facade.VariantUserFacade;
 import com.variants.editor.web.request.VariantRequest;
-import com.variants.editor.web.response.UserVariantResponse;
+import com.variants.editor.web.response.ApiResponse;
 import com.variants.editor.web.response.VariantResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,7 +36,7 @@ public class VariantController {
     @PutMapping(value = "/assign/{variantId}/to/{userUUID}",
             produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     public @ResponseBody
-    UserVariantResponse assignVariantToUser(@PathVariable Long variantId, @PathVariable String userUUID) {
+    ApiResponse assignVariantToUser(@PathVariable Long variantId, @PathVariable String userUUID) {
         return variantUserFacade.assignVariantToUser(variantId, userUUID);
     }
 

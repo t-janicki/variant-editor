@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
-import com.variants.editor.service.impl.UserServiceImpl;
+import com.variants.editor.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +22,14 @@ import io.jsonwebtoken.ExpiredJwtException;
 @Component
 @Transactional
 public class JwtRequestFilter extends OncePerRequestFilter {
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
     private JwtTokenUtil jwtTokenUtil;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtRequestFilter.class);
 
     @Autowired
-    public JwtRequestFilter(UserServiceImpl userServiceImpl, JwtTokenUtil jwtTokenUtil) {
-        this.userServiceImpl = userServiceImpl;
+    public JwtRequestFilter(UserService userService, JwtTokenUtil jwtTokenUtil) {
+        this.userService = userService;
         this.jwtTokenUtil = jwtTokenUtil;
     }
 
@@ -51,7 +51,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userServiceImpl.loadUserByUsername(username);
+            UserDetails userDetails = userService.loadUserByUsername(username);
             if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());

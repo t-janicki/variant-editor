@@ -9,8 +9,8 @@ import com.variants.editor.service.UserService;
 import com.variants.editor.service.VariantService;
 import com.variants.editor.web.request.RegisterUserRequest;
 import com.variants.editor.web.request.VariantRequest;
+import com.variants.editor.web.response.ApiResponse;
 import com.variants.editor.web.response.UserResponse;
-import com.variants.editor.web.response.UserVariantResponse;
 import com.variants.editor.web.response.UserVariantsResponse;
 import com.variants.editor.web.response.VariantResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,16 +58,9 @@ public class VariantUserFacade {
         return variantMapper.mapToVariantResponse(variant);
     }
 
-    public UserVariantResponse assignVariantToUser(Long variantId, String userUUID) {
-        Variant variant = variantService.assignVariantToUser(variantId, userUUID);
-
-        User user = userService.getByUsername(userUUID);
-
-        UserResponse userResponse = userMapper.mapToUserResponse(user);
-
-        VariantResponse variantResponse = variantMapper.mapToVariantResponse(variant);
-
-        return new UserVariantResponse(variantResponse, userResponse);
+    public ApiResponse assignVariantToUser(Long variantId, String userUUID) {
+        variantService.assignVariantToUser(variantId, userUUID);
+        return new ApiResponse(true, "Variant assigned to user");
     }
 
     public Page<VariantResponse> getVariants(Pageable pageable) {

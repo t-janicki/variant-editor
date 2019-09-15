@@ -6,8 +6,11 @@ import com.variants.editor.web.request.RegisterUserRequest;
 import com.variants.editor.web.response.LoginResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface UserService {
+
+    UserDetails loadUserByUsername(String username);
 
     LoginResponse authenticateUser(LoginRequest request);
 
