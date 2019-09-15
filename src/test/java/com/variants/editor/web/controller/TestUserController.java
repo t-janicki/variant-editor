@@ -47,16 +47,20 @@ public class TestUserController {
     }
 
     @Test
-    public void shouldFetchSaveUser() throws Exception {
+    public void shouldFetchSaveUser() {
+        // GIVEN
         RegisterUserRequest request = new RegisterUserRequest("TestName", "password1");
 
+        //WHEN
         ResponseEntity<User> response = restTemplate.postForEntity("/user", request, User.class);
 
+        //THEN
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("TestName", response.getBody().getName());
         assertEquals(36, response.getBody().getUsername().length());
 
         verify(mockUserRepository, times(1)).save(any(User.class));
     }
+
 
 }

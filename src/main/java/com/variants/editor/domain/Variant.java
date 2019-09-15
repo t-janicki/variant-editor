@@ -39,6 +39,15 @@ public class Variant {
     public Variant() {
     }
 
+    public Variant(Long id, Long position, String alteration,
+                   String chromosome, String description) {
+        this.id = id;
+        this.position = position;
+        this.alteration = alteration;
+        this.chromosome = chromosome;
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }
