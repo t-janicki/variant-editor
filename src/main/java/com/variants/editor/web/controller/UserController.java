@@ -37,16 +37,16 @@ public class UserController {
     public Resource<UserResponse> registerUser(@Valid @RequestBody RegisterUserRequest request) {
         UserResponse response = variantUserFacade.registerUser(request);
 
-        Link link = linkTo(UserController.class).slash(response.getUuid()).withSelfRel();
+        Link link = linkTo(UserController.class).slash(response.getUsername()).withSelfRel();
 
         return new Resource<>(response, link);
     }
 
-    @GetMapping(value = "/{uuid}" , produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
-    public Resource<UserResponse> getUserByUUID(@PathVariable String uuid) {
-        UserResponse response = variantUserFacade.getUserByUUID(uuid);
+    @GetMapping(value = "/{username}" , produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+    public Resource<UserResponse> getUserByUUID(@PathVariable String username) {
+        UserResponse response = variantUserFacade.getUserByUsername(username);
 
-        Link link = linkTo(UserController.class).slash(response.getUuid()).withSelfRel();
+        Link link = linkTo(UserController.class).slash(response.getUsername()).withSelfRel();
 
         return new Resource<>(response, link);
     }

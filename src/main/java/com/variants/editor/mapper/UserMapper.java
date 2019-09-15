@@ -12,7 +12,7 @@ public class UserMapper {
         return new UserResponse(
                 user.getId(),
                 user.getName(),
-                user.getUuid()
+                user.getUsername()
         );
     }
 

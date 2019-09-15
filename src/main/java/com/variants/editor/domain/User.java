@@ -17,8 +17,8 @@ public class User {
     @Size(min = 4, max = 60)
     private String name;
 
-    @Column(name = "UUID", unique = true)
-    private String uuid;
+    @Column(name = "USERNAME", unique = true)
+    private String username;
 
     @Column(name = "PASSWORD")
     @Size(min = 8, max = 60)
@@ -42,12 +42,12 @@ public class User {
         this.name = name;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -72,11 +72,11 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(id, user.id) &&
-                Objects.equals(uuid, user.uuid);
+                Objects.equals(username, user.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, uuid);
+        return Objects.hash(id, username);
     }
 }

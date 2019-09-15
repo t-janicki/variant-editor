@@ -48,7 +48,7 @@ public class VariantServiceImpl implements VariantService {
     }
 
     public Variant assignVariantToUser(Long variantId, String userUUID) {
-        User user = userService.getByUUID(userUUID);
+        User user = userService.getByUsername(userUUID);
 
         Variant variant = getVariantById(variantId);
 
@@ -66,7 +66,7 @@ public class VariantServiceImpl implements VariantService {
     }
 
     public Page<Variant> getVariantsOfCurrentUser(Pageable pageable, UserPrincipal userPrincipal)  {
-        User user = userService.getByUUID(userPrincipal.getUsername());
+        User user = userService.getByUsername(userPrincipal.getUsername());
         Page<Variant> variants = variantRepository.findAllByUsers(pageable, user);
 
         System.out.println(variants);

@@ -51,22 +51,22 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String uuid) {
-        User user = getByUUID(uuid);
+    public UserDetails loadUserByUsername(String username) {
+        User user = getByUsername(username);
 
         return UserPrincipal.create(user);
     }
 
-    public User getByUUID(String uuid) {
-        return userRepository.findByUuid(uuid)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with UUID " + uuid));
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username " + username));
     }
 
     public LoginResponse authenticateUser(LoginRequest request) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getUuid(), request.getPassword()));
+                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
-        UserDetails userDetails = loadUserByUsername(request.getUuid());
+        UserDetails userDetails = loadUserByUsername(request.getUsername());
 
         String token = jwtTokenUtil.generateToken(userDetails);
 
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 .forEach(u -> {
                     u.setName(request.getName());
                     u.setPassword(passwordEncoder.encode(request.getPassword()));
-                    u.setUuid(generateUUID());
+                    u.setUsername(generateUsername());
                     u.setRoles(Collections.singleton(getRole()));
 
                     userRepository.save(u);
@@ -104,7 +104,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         }
     }
 
-    private String generateUUID() {
+    private String generateUsername() {
         return UUID.randomUUID().toString().toUpperCase();
     }
 

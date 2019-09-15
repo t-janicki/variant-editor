@@ -46,8 +46,8 @@ public class VariantUserFacade {
         return userMapper.mapToUserResponsePage(users);
     }
 
-    public UserResponse getUserByUUID(String uuid) {
-        User user = userService.getByUUID(uuid);
+    public UserResponse getUserByUsername(String username) {
+        User user = userService.getByUsername(username);
 
         return userMapper.mapToUserResponse(user);
     }
@@ -61,7 +61,7 @@ public class VariantUserFacade {
     public UserVariantResponse assignVariantToUser(Long variantId, String userUUID) {
         Variant variant = variantService.assignVariantToUser(variantId, userUUID);
 
-        User user = userService.getByUUID(userUUID);
+        User user = userService.getByUsername(userUUID);
 
         UserResponse userResponse = userMapper.mapToUserResponse(user);
 

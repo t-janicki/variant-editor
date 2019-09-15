@@ -3,15 +3,15 @@ package com.variants.editor.web.response;
 public class UserResponse {
     private Long id;
     private String name;
-    private String uuid;
+    private String username;
 
     public UserResponse() {
     }
 
-    public UserResponse(Long id, String name, String uuid) {
+    public UserResponse(Long id, String name, String username) {
         this.id = id;
         this.name = name;
-        this.uuid = uuid;
+        this.username = username;
     }
 
     public Long getId() {
@@ -22,7 +22,7 @@ public class UserResponse {
         return name;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getUsername() {
+        return username;
     }
 }

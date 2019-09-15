@@ -1,19 +1,19 @@
 package com.variants.editor.web.request;
 
 public class LoginRequest {
-    private String uuid;
+    private String username;
     private String password;
 
     public LoginRequest() {
     }
 
-    public LoginRequest(String uuid, String password) {
-        this.uuid = uuid;
+    public LoginRequest(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
-    public String getUuid() {
-        return this.uuid;
+    public String getUsername() {
+        return this.username;
     }
 
     public String getPassword() {
