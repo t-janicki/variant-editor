@@ -11,7 +11,7 @@ public interface VariantService {
 
     Variant registerVariant(VariantRequest request);
 
-    Variant assignVariantToUser(Long variantId, String userUUID);
+    Variant assignVariantToUser(Long variantId, String username);
 
     Page<Variant> getAllVariants(Pageable pageable);
 

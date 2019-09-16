@@ -56,6 +56,11 @@ public class UserController {
                                                                  PagedResourcesAssembler assembler) {
         Page<UserResponse> response = variantUserFacade.getUsers(pageable);
 
+        if (!response.hasContent()) {
+            PagedResources pagedResources = assembler.toEmptyResource(response, UserResponse.class);
+            return new ResponseEntity<PagedResources<UserResponse>>(pagedResources, HttpStatus.OK);
+        }
+
         return new ResponseEntity<>(assembler.toResource(response), HttpStatus.OK);
     }
 

@@ -33,11 +33,11 @@ public class VariantController {
         return variantUserFacade.registerVariant(request);
     }
 
-    @PutMapping(value = "/assign/{variantId}/to/{userUUID}",
+    @PutMapping(value = "/assign/{variantId}/to/{username}",
             produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ApiResponse assignVariantToUser(@PathVariable Long variantId, @PathVariable String userUUID) {
-        return variantUserFacade.assignVariantToUser(variantId, userUUID);
+    ApiResponse assignVariantToUser(@PathVariable Long variantId, @PathVariable String username) {
+        return variantUserFacade.assignVariantToUser(variantId, username);
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)

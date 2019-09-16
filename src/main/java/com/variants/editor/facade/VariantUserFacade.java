@@ -58,8 +58,8 @@ public final class VariantUserFacade {
         return variantMapper.mapToVariantResponse(variant);
     }
 
-    public ApiResponse assignVariantToUser(Long variantId, String userUUID) {
-        variantService.assignVariantToUser(variantId, userUUID);
+    public ApiResponse assignVariantToUser(Long variantId, String username) {
+        variantService.assignVariantToUser(variantId, username);
         return new ApiResponse(true, "Variant assigned to user");
     }
 
