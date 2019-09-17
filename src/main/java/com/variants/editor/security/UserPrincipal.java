@@ -20,7 +20,7 @@ public class UserPrincipal implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(Long id, String name, String username, String password,
+    private UserPrincipal(Long id, String name, String username, String password,
                          Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.name = name;

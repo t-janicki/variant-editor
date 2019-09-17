@@ -10,8 +10,11 @@ public final class VariantResponse {
     public VariantResponse() {
     }
 
-    public VariantResponse(Long id, Long position,
-                           String alteration, String chromosome, String description) {
+    public VariantResponse(Long id,
+                           Long position,
+                           String alteration,
+                           String chromosome,
+                           String description) {
         this.id = id;
         this.position = position;
         this.alteration = alteration;

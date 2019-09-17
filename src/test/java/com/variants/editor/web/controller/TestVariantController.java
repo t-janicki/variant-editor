@@ -27,7 +27,6 @@ public class TestVariantController {
     @MockBean
     private VariantRepository mockVariantRepository;
 
-
     @Test
     public void shouldFetchRegisterVariant() {
         // GIVEN
